@@ -108,3 +108,30 @@ let sanphamkhac = [
   {tile: "M0115", img:"/anh/M0115.jpg"},
   {tile: "M0116", img:"/anh/M0116.jpg"},
 ]
+const scrollBox = document.getElementById('pdfScroll');
+let isDown = false;
+let startY;
+let scrollTop;
+
+scrollBox.addEventListener('mousedown', (e) => {
+  isDown = true;
+  scrollBox.classList.add('active');
+  startY = e.pageY - scrollBox.offsetTop;
+  scrollTop = scrollBox.scrollTop;
+});
+
+scrollBox.addEventListener('mouseleave', () => {
+  isDown = false;
+});
+
+scrollBox.addEventListener('mouseup', () => {
+  isDown = false;
+});
+
+scrollBox.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const y = e.pageY - scrollBox.offsetTop;
+  const walk = (y - startY) * 1.5; // tốc độ kéo
+  scrollBox.scrollTop = scrollTop - walk;
+});
