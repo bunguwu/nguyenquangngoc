@@ -196,10 +196,10 @@
     text-align: center;
   }
 
-  .footer-top,
-  .footer-middle,
-  .footer-commit {
-    display: none;
+ 
+  .footer-middle
+  {
+   display: none;
   }
 
   .footer-bottom {
